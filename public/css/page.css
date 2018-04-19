@@ -1,0 +1,37 @@
+.btnactions {overflow: hidden;}
+.btnactions .btn {
+	float: left;
+	position: relative;
+	top: 0;
+	
+	cursor: pointer;
+	
+	width: 72px;
+	height: 41px;
+	
+	background: white;
+	border-radius: 3px;
+
+    border: 1px solid #040404;
+    padding:  0em 1em;
+    font-size: 24px;
+    font-color: #000;
+
+	margin: 0 3px 4px 0;
+	
+	color: #888;
+	line-height: 36px;
+	
+	transition: all 0.2s ease;
+}
+
+.btnactions .btn:hover {
+	background: #9c89f6;
+	box-shadow: 0px 1px #6b54d3;
+	color: white;
+}
+
+.btnactions .btn:active {
+	box-shadow: 0px 0px #6b54d3;
+	top: 4px;
+}

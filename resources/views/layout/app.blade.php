@@ -9,6 +9,7 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('css/fontawesome.css')}}">
+        @yield('styles')
         <script defer src="{{ asset('js/fontawesome-all.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>

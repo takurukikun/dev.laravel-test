@@ -14,8 +14,8 @@
           <ul class="nav navbar-nav">
             <li class="{{ (current_page('generator')) ? 'active' : '' }}">
             	<a href="{{url('/generator')}}">Gerador de Números</a></li>
-            <!-- <li class="{{ (current_page('simplifier')) ? 'active' : '' }}">
-            	<a href="{{url('/simplifier')}}">Simplificador de Expressões</a></li> !-->
+            <li class="{{ (current_page('simplifier')) ? 'active' : '' }}">
+            	<a href="{{url('/simplifier')}}">Simplificador de Expressões</a></li>
             
             <!--<li>
               <a class="btn btn-default btn-outline btn-circle"  data-toggle="collapse" href="#nav-collapse3" aria-expanded="false" aria-controls="nav-collapse3">Search</a>

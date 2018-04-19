@@ -12,6 +12,8 @@ class GeneratorController extends Controller
     public function generated(Request $request){
     	$op = Input::get('op');
     	$qtde = Input::get('qtde', 1);
+    	print($qtde);
+    	print($op[0]);
     	$result = "";
 
 		for ($i=0; $i < count($op); $i++) { 
