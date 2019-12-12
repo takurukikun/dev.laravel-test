@@ -4,10 +4,7 @@ namespace App\Http\Controllers\Site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
-
-class SimplifierController extends Controller
-{
-
+class Stack{
     protected $limit;
     protected $stack;
     public function __construct($limit = 100, $initial = array()) {
@@ -38,7 +35,9 @@ class SimplifierController extends Controller
     public function top() {
         return current($this->stack);
     }
+}
 
+class SimplifierController extends Controller{
     public function match($character1, $character2) { 
        if ($character1 == '(' && $character2 == ')'){
          return true; 
@@ -49,34 +48,54 @@ class SimplifierController extends Controller
     } 
 
     public function balanced($exp){ 
-        
-        for($i=0;$i<strlen($exp);$i++) { 
+        $st = new Stack();
+        for($i=0; $i<strlen($exp); $i++) { 
             if ($exp[$i] == '('){
-                $this->push($exp[$i]); 
+                $st->push($exp[$i]); 
             }
             if ($exp[$i] == ')'){ 
-                if ($this->isEmpty()) { 
+                if ($st->isEmpty()) { 
                     return false; 
-                } elseif (!$this->match($this->pop(), $exp[$i]) ){ 
+                } elseif (!$this->match($st->pop(), $exp[$i]) ){ 
                    return false; 
                 } 
             } 
         }
-        if ($this->isEmpty($this)){
+        if ($st->isEmpty($this)){
             return true;
         }
         else{
             return false; 
         }
-    }  
+    }
+    public function implicitMult($exp){
+        $letter = array('A', 'B', 'C', 'D', 'E', 'F');
+        for ($i=0; $i < strlen($exp)-1; $i++){
+            if(in_array($exp[$i], $letter)){
+                if(in_array($exp[$i], $letter)){
+                    $exp = substr_replace($exp, '^', $i, 0);
+                }
+            }
+        }
+        for($i = 0; $i < strlen($exp)-1; $i++){
+            if(in_array($exp[$i], $letter)){
+                if($exp[$i+1] == '('){
 
+                }
+            }
+        }
+        return $exp;
+    }
+    public function implicitPar($exp){
+
+    }
     public function simplified(Request $request){
         $exp = $request->input('expName');
 
 
     //                    A+b*(b+a+c)
     //                    B+C*(a+b)+(b*c)+a
-
+        // Input::replace(['expName' => $this->implicitMult($exp)]);
         if(!$this->balanced($exp)){  
             return view('simplifier.error');
         }else{
